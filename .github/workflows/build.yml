@@ -1,6 +1,6 @@
 diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
 new file mode 100644
-index 0000000000000000000000000000000000000000..5704aaa54c5d9b716b34d2a8273f5115c3fa7a95
+index 0000000000000000000000000000000000000000..f09c0100805e4ac39bd903a2201e4a47b9090663
 --- /dev/null
 +++ b/.github/workflows/build.yml
 @@ -0,0 +1,37 @@
@@ -34,7 +34,7 @@ index 0000000000000000000000000000000000000000..5704aaa54c5d9b716b34d2a8273f5115
 +        shell: pwsh
 +        run: |
 +          if (Test-Path KaspiKassaAPIv3_bpo.zip) { Remove-Item KaspiKassaAPIv3_bpo.zip -Force }
-+          Compress-Archive -Path bpo_driver/INFO.XML, bpo_driver/MANIFEST.XML, bpo_driver/KaspiKassaAPIv3_x64.dll -DestinationPath KaspiKassaAPIv3_bpo.zip
++          Compress-Archive -Path bpo_driver/INFO.XML, bpo_driver/MANIFEST.XML, bpo_driver/TableActions.xml, bpo_driver/TableParameters.xml, bpo_driver/KaspiKassaAPIv3_x64.dll -DestinationPath KaspiKassaAPIv3_bpo.zip
 +
 +      - name: Upload artifact
 +        uses: actions/upload-artifact@v4
