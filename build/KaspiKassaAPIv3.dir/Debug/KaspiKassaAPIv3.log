@@ -1,9 +1,0 @@
-﻿  AddInNative.cpp
-C:\Users\kaz-140\Documents\GitHub\c-\src\AddInNative.cpp(83,5): error C2248: ILanguageExtenderBase::~ILanguageExtenderBase: невозможно обратиться к protected член, объявленному в классе "ILanguageExtenderBase"
-      C:\Users\kaz-140\Documents\GitHub\c-\include_1c\AddInDefBase.h(103,1):
-      в этом месте создано компилятором: "ILanguageExtenderBase::~ILanguageExtenderBase"
-      C:\Users\kaz-140\Documents\GitHub\c-\include_1c\AddInDefBase.h(77,7):
-       см. объявление "ILanguageExtenderBase"
-  
-  WinHttpClient.cpp
-  Создание кода...
