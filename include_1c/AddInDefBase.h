@@ -99,7 +99,7 @@ public:
     virtual void SetLocale(const WCHAR_T* loc) = 0;
 
 public:
-    ~ILanguageExtenderBase() override = default;
+    virtual ~ILanguageExtenderBase() override = default;
 };
 
 using IComponentBase = ILanguageExtenderBase;

@@ -2,16 +2,14 @@
 <Settings>
   <Page Name="Основные">
     <Group Name="Подключение">
-      <Parameter Name="БазовыйURL" Caption="Базовый URL" Type="String" DefaultValue="https://kaspi.kz"/>
-      <Parameter Name="Токен" Caption="Токен" Type="String" DefaultValue=""/>
-      <Parameter Name="ИдентификаторТочки" Caption="Идентификатор точки" Type="String" DefaultValue=""/>
+      <Parameter Name="BaseURL" Caption="Base URL" Type="String" DefaultValue="https://kaspi.kz/api/v3"/>
+      <Parameter Name="Token" Caption="Token" Type="String" DefaultValue=""/>
+      <Parameter Name="PointId" Caption="Point ID" Type="String" DefaultValue=""/>
     </Group>
-    <Group Name="Таймауты">
-      <Parameter Name="МаксимальноеВремяОжидания" Caption="Максимальное время ожидания" Type="Number" DefaultValue="30"/>
-      <Parameter Name="ИнтервалПаузыПоллинга" Caption="Интервал паузы поллинга" Type="Number" DefaultValue="3"/>
-    </Group>
-    <Group Name="Диагностика">
-      <Parameter Name="ВключитьПодробныйЛог" Caption="Включить подробный лог" Type="Boolean" DefaultValue="false"/>
+    <Group Name="Временные параметры">
+      <Parameter Name="TimeoutMs" Caption="Таймаут, мс" Type="Number" DefaultValue="30000"/>
+      <Parameter Name="PollIntervalMs" Caption="Интервал опроса, мс" Type="Number" DefaultValue="1000"/>
+      <Parameter Name="VerboseLog" Caption="Подробный лог" Type="Boolean" DefaultValue="false"/>
     </Group>
   </Page>
 </Settings>
