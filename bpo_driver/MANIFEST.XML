@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <bundle xmlns="http://v8.1c.ru/8.2/addin/bundle">
   <component path="KaspiKassaAPIv3_x64.dll"/>
 </bundle>
