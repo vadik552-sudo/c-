@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Settings>
   <Page Name="Основные">
     <Group Name="Подключение">
-      <Parameter Name="БазовыйURL" Caption="Базовый URL" Type="String" DefaultValue="https://kaspi.kz"/>
-      <Parameter Name="Токен" Caption="Токен" Type="String"/>
-      <Parameter Name="ИдентификаторТочки" Caption="Идентификатор точки" Type="String"/>
+      <Parameter Name="BaseUrl" Caption="Base URL" Type="String" DefaultValue="https://kaspi.kz"/>
+      <Parameter Name="Token" Caption="Token" Type="String" DefaultValue=""/>
+      <Parameter Name="PointId" Caption="Point ID" Type="String" DefaultValue=""/>
     </Group>
     <Group Name="Таймауты">
-      <Parameter Name="МаксимальноеВремяОжидания" Caption="Максимальное время ожидания" Type="Number" DefaultValue="90"/>
-      <Parameter Name="ИнтервалПаузыПоллинга" Caption="Интервал паузы поллинга" Type="Number" DefaultValue="3"/>
+      <Parameter Name="MaxWaitSeconds" Caption="Максимальное время ожидания" Type="Number" DefaultValue="30"/>
+      <Parameter Name="PollIntervalSeconds" Caption="Интервал паузы поллинга" Type="Number" DefaultValue="3"/>
     </Group>
     <Group Name="Диагностика">
-      <Parameter Name="ВключитьПодробныйЛог" Caption="Включить подробный лог" Type="Boolean" DefaultValue="false"/>
+      <Parameter Name="Verbose" Caption="Подробный лог" Type="Boolean" DefaultValue="false"/>
     </Group>
   </Page>
 </Settings>
