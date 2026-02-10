@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <info>
-  <component progid="AddIn.KaspiKassaAPIv3" type="POSTerminal" name="KaspiKassa API v3" version="3.0.0"/>
+  <component progid="AddIn.KaspiKassaAPIv3" type="Native" name="KaspiKassa API v3" version="3.0.1"/>
 </info>
