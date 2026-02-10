@@ -203,7 +203,10 @@ bool_t KaspiKassaComponent::CallAsProc(const long lMethodNum, tVariant* paParams
             SetLastError(L"SetParameter expects 2 parameters");
             return 0;
         }
-        const std::wstring key = ToWString(paParams[0].value.str.ptrVal);
+        std::wstring key;
+        if (!TryReadVariantString(paParams[0], &key, L"SetParameter key")) {
+            return 0;
+        }
         return SetParameterValue(key, paParams[1]) ? 1 : 0;
     }
     if (lMethodNum == static_cast<long>(MethodId::Close)) {
@@ -230,12 +233,17 @@ bool_t KaspiKassaComponent::CallAsFunc(const long lMethodNum, tVariant* pvarRetV
                 pvarRetValue,
                 L"БазовыйURL;Токен;ИдентификаторТочки;МаксимальноеВремяОжидания;ИнтервалПаузыПоллинга;ВключитьПодробныйЛог");
 
-        case MethodId::SetParameter:
+        case MethodId::SetParameter: {
             if (lSizeArray != 2 || paParams == nullptr) {
                 SetLastError(L"SetParameter expects 2 parameters");
                 return 0;
             }
-            return SetVariantBool(pvarRetValue, SetParameterValue(ToWString(paParams[0].value.str.ptrVal), paParams[1]));
+            std::wstring key;
+            if (!TryReadVariantString(paParams[0], &key, L"SetParameter key")) {
+                return SetVariantBool(pvarRetValue, false);
+            }
+            return SetVariantBool(pvarRetValue, SetParameterValue(key, paParams[1]));
+        }
 
         case MethodId::Open:
             opened_ = true;
@@ -263,7 +271,11 @@ bool_t KaspiKassaComponent::CallAsFunc(const long lMethodNum, tVariant* pvarRetV
                 SetLastError(L"DoAdditionalAction expects one parameter");
                 return 0;
             }
-            const std::wstring action = ToLower(ToWString(paParams[0].value.str.ptrVal));
+            std::wstring action;
+            if (!TryReadVariantString(paParams[0], &action, L"DoAdditionalAction action")) {
+                return SetVariantString(pvarRetValue, lastError_);
+            }
+            action = ToLower(action);
             if (action == L"testconnection") {
                 std::wstring response;
                 const bool ok = DoHttpTest(&response);
@@ -363,6 +375,19 @@ std::wstring KaspiKassaComponent::ToWString(const WCHAR_T* value) {
 
 bool KaspiKassaComponent::EqualsNoCase(const std::wstring& left, const wchar_t* right) {
     return ToLower(left) == ToLower(std::wstring(right));
+}
+
+bool KaspiKassaComponent::TryReadVariantString(const tVariant& value, std::wstring* out, const wchar_t* argName) {
+    if (value.vt != VTYPE_LPWSTR && value.vt != VTYPE_PWSTR) {
+        SetLastError(std::wstring(argName) + L" must be a string");
+        return false;
+    }
+    if (out == nullptr) {
+        SetLastError(std::wstring(argName) + L" output is null");
+        return false;
+    }
+    *out = ToWString(value.value.str.ptrVal);
+    return true;
 }
 
 bool KaspiKassaComponent::SetParameterValue(const std::wstring& key, const tVariant& value) {

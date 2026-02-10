@@ -78,6 +78,7 @@ public:
     bool SetVariantInt(tVariant* variant, std::int32_t value) const;
     static std::wstring ToWString(const WCHAR_T* value);
     static bool EqualsNoCase(const std::wstring& left, const wchar_t* right);
+    bool TryReadVariantString(const tVariant& value, std::wstring* out, const wchar_t* argName);
     bool SetParameterValue(const std::wstring& key, const tVariant& value);
     bool GetParameterValue(const std::wstring& key, std::wstring* out) const;
     bool DoHttpTest(std::wstring* responseText);
@@ -100,4 +101,3 @@ private:
 
 IMemoryManager* GetMemoryManager();
 void SetMemoryManager(IMemoryManager* memoryManager);
-

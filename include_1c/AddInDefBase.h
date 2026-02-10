@@ -98,7 +98,7 @@ public:
     virtual void ExternalEvent(const WCHAR_T* wsSource, const WCHAR_T* wsMessage, const WCHAR_T* wsData) = 0;
     virtual void SetLocale(const WCHAR_T* loc) = 0;
 
-protected:
+public:
     ~ILanguageExtenderBase() override = default;
 };
 
