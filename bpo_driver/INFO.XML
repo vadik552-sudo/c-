@@ -1,4 +1,6 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<info>
-  <component progid="AddIn.KaspiKassaAPIv3" type="POSTerminal" name="KaspiKassa API v3" version="1.0.0"/>
-</info>
+<?xml version="1.0" encoding="UTF-8"?>
+<bundle xmlns="http://v8.1c.ru/8.2/addin/bundle">
+  <driver name="KaspiKassaAPIv3" displayName="KaspiKassa API v3" progid="AddIn.KaspiKassaAPIv3" version="1.0.0.1">
+    <component os="Windows" arch="x86_64" path="KaspiKassaAPIv3_x64.dll" type="native" class="KaspiKassaAPIv3"/>
+  </driver>
+</bundle>

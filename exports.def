@@ -1,0 +1,7 @@
+LIBRARY KaspiKassaAPIv3_x64
+EXPORTS
+    GetClassObject
+    DestroyObject
+    GetClassNames
+    SetGlobalMemoryManager
+    SetMemManager
