@@ -392,8 +392,10 @@ bool KaspiKassaComponent::TryReadVariantString(const tVariant& value, std::wstri
 
 bool KaspiKassaComponent::SetParameterValue(const std::wstring& key, const tVariant& value) {
     const std::wstring lowKey = ToLower(key);
-    auto asString = [&value]() -> std::wstring {
+    auto asString = [this, &value, &key]() -> std::wstring {
         if (value.vt != VTYPE_LPWSTR && value.vt != VTYPE_PWSTR) {
+            SetLastError(L"Parameter '" + key + L"' expects a string value");
+            SetLastError(L"Parameter '" + key + L"' expects a string value");
             return std::wstring();
         }
         return ToWString(value.value.str.ptrVal);
@@ -441,7 +443,6 @@ bool KaspiKassaComponent::GetParameterValue(const std::wstring&, std::wstring*) 
     return false;
 }
 
-bool KaspiKassaComponent::DoHttpTest(std::wstring* responseText) {
     const HttpResult result = PerformHttpGet(baseUrl_, static_cast<unsigned int>(requestTimeoutSec_));
     if (!result.success) {
         SetLastError(result.error);
@@ -466,4 +467,3 @@ bool KaspiKassaComponent::DoHttpTest(std::wstring* responseText) {
 void KaspiKassaComponent::SetLastError(const std::wstring& error) {
     lastError_ = error;
 }
-
